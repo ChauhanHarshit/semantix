@@ -1,101 +1,57 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react"
+import { ChevronDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
+// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isOpen, setIsOpen] = useState(false)
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-black via-black to-[#0a1a1a] text-white">
+      <header className="flex items-center justify-between p-4 bg-[#111111]/80 rounded-lg m-3">
+        <div className="text-2xl font-bold">Semantix</div>
+        <div className="flex items-center gap-4">
+          <div className="hidden md:block">Marketplace</div>
+          <div className="hidden md:block">100 $SEM</div>
+          <Button
+            variant="outline"
+            className="bg-[#8de0c8]/20 text-white border-none hover:bg-[#8de0c8]/30"
+            onClick={() => setIsOpen(!isOpen)}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Network <ChevronDown className="ml-2 h-4 w-4" />
+          </Button>
+          <Button variant="outline" className="bg-[#8de0c8]/20 text-white border-none hover:bg-[#8de0c8]/30">
+            0x999...
+          </Button>
+          <Button
+            variant="outline"
+            className="bg-[#8de0c8]/20 text-white border-none hover:bg-[#8de0c8]/30 flex items-center gap-2"
           >
-            Read our docs
-          </a>
+            Profile
+            {/* <Avatar className="h-6 w-6">
+              <AvatarImage src="/placeholder-user.jpg" />
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar> */}
+          </Button>
         </div>
+      </header>
+
+      <main className="flex flex-col items-center justify-center text-center px-4 py-20 md:py-40">
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl">
+          Train and Trade
+          <br />
+          Distributed IPs
+        </h1>
+        <p className="text-lg md:text-xl mb-10 text-gray-300 max-w-2xl">
+          A decentralised marketplace to build deploy and monetise AI agents
+        </p>
+        <Button className="bg-[#8de0c8] hover:bg-[#7bc9b3] text-black font-medium px-8 py-6 text-lg rounded-md">
+          Try Demo
+        </Button>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
-  );
+  )
 }
+
