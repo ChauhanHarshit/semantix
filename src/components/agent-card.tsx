@@ -5,7 +5,7 @@ interface Agent {
   title: string
   description: string
   price: string
-  views: string
+  parameter: string
   rating: number
 }
 
@@ -35,7 +35,7 @@ const AgentCard: FC<AgentCardProps> = ({ agent, highlighted = false }) => {
         <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
           <span>{agent.price}</span>
           <div className="flex items-center gap-2">
-            <span>{agent.views}</span>
+            <span>{agent.parameter}</span>
             <div className="flex">
               {Array(5)
                 .fill(0)

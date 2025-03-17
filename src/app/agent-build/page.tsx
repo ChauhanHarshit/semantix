@@ -1,8 +1,37 @@
+"use client"
+
 import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 import Navbar from "@/components/navbar"
+import { useRouter } from "next/navigation"
+import { useAgentContext } from "@/context/AgentContext"
+import { useState } from "react"
 
 export default function AgentBuild() {
+  const { addAgent } = useAgentContext()
+  const router = useRouter()
+
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [price, setPrice] = useState("")
+  const [parameter, setParameter] = useState("")
+  const [rating, setRating] = useState(4)
+
+  const handleSubmit = () => {
+    if (!title || !description || !price) return
+
+    addAgent({
+      title,
+      description,
+      price: `${price} $SEM`,
+      parameter,
+      rating
+    })
+
+    router.push("/dashboard")
+  }
+
+
   return (
     // <main className="min-h-screen bg-gradient-to-br from-black via-black to-emerald-950">
     <main className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg1.png')" }}>
@@ -14,17 +43,17 @@ export default function AgentBuild() {
         <div className="space-y-6">
           <div className="space-y-2">
             <label className="text-white block">Agent Name</label>
-            <input type="text" className="w-full bg-black border border-gray-800 rounded-md p-3 text-white" />
+            <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white" />
           </div>
 
           <div className="space-y-2">
             <label className="text-white block">Description</label>
-            <textarea className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
+            <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
           </div>
 
           <div className="space-y-2">
             <label className="text-white block">Parameters</label>
-            <textarea className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
+            <textarea value ={parameter} onChange={(e) => setParameter(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
           </div>
 
           <div className="space-y-2">
@@ -37,11 +66,11 @@ export default function AgentBuild() {
 
           <div className="space-y-2">
             <label className="text-white block">Set Price</label>
-            <input type="text" className="w-full bg-black border border-gray-800 rounded-md p-3 text-white" />
+            <input type="text" value={price} onChange={(e) => setPrice(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white" />
           </div>
 
           <div className="flex justify-center mt-8">
-            <button className="bg-[#1D4500] text-white px-8 py-2 rounded-md">Build Now</button>
+          <button onClick={handleSubmit} className="bg-[#1D4500] text-white px-8 py-2 rounded-md">Build Now</button>
           </div>
         </div>
       </div>

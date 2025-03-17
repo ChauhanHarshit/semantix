@@ -2,6 +2,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import { MetaMaskProvider } from "@metamask/sdk-react";
+import { AgentProvider } from "@/context/AgentContext"
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+         <AgentProvider>
         <MetaMaskProvider
           debug={true}
           sdkOptions={{
@@ -36,6 +38,7 @@ export default function RootLayout({
         >
           {children}
         </MetaMaskProvider>
+        </AgentProvider>
       </body>
     </html>
   );
