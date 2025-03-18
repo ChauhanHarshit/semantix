@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar"
 import "../app/globals.css";
 import { useRouter } from "next/navigation";
 

@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import Navbar from "@/components/navbar"
+import Navbar from "@/components/Navbar"
 
 interface Message {
   id: string

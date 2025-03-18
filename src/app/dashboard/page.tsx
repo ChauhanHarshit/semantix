@@ -1,6 +1,6 @@
 "use client"
 
-import Navbar from "@/components/navbar"
+import Navbar from "@/components/Navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "@/context/AgentContext"
 import AgentCard from "@/components/agent-card"
