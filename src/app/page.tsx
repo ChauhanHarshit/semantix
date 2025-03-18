@@ -1,8 +1,8 @@
 "use client"
 
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/app/components/ui/Button"
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Navbar from "@/components/Navbar"
+import Navbar from "@/app/components/Navbar"
 import "../app/globals.css";
 import { useRouter } from "next/navigation";
 

@@ -1,9 +1,9 @@
 "use client"
 
-import Navbar from "@/components/Navbar"
+import Navbar from "@/app/components/Navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "@/context/AgentContext"
-import AgentCard from "@/components/agent-card"
+import AgentCard from "@/app/components/agent-card"
 
 export default function Dashboard() {
   const router = useRouter()

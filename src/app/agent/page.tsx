@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/Button"
-import Navbar from "@/components/Navbar"
+import { Button } from "@/app/components/ui/Button"
+import Navbar from "@/app/components/Navbar"
 
 interface Message {
   id: string
