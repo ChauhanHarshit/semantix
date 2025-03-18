@@ -1,8 +1,8 @@
 "use client"
 
-import Navbar from "@/app/components/Navbar"
+import Navbar from "../components/Navbar"
 import { useRouter } from "next/navigation"
-import { useAgentContext } from "@/context/AgentContext"
+import { useAgentContext } from "../../context/AgentContext"
 import { useState } from "react"
 
 export default function AgentBuild() {
