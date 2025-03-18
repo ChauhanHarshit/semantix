@@ -11,7 +11,7 @@ interface WalletContextType {
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
 export const WalletProvider = ({ children }: { children: ReactNode }) => {
-  const { sdk, connected, account } = useSDK();
+  const {  connected, account } = useSDK();
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
 
   useEffect(() => {

@@ -13,10 +13,12 @@ export default function AgentBuild() {
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
   const [parameter, setParameter] = useState("")
-  const [rating, setRating] = useState(4)
+  // const [rating, setRating] = useState(4)
 
   const handleSubmit = () => {
     if (!title || !description || !price) return
+
+    const rating : number = 4; 
 
     addAgent({
       title,

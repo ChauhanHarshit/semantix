@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Navbar from "@/components/navbar";
@@ -9,7 +8,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
-  const [isOpen, setIsOpen] = useState(false)
+  // const [isOpen, setIsOpen] = useState(false)
 
   return (
     // <div className="min-h-screen bg-gradient-to-b from-black via-black to-[#0a1a1a] text-white">

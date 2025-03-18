@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const router = useRouter();
-  const { sdk, connected, account } = useSDK();
+  const { sdk } = useSDK();
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 

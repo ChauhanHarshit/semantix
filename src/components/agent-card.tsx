@@ -15,7 +15,7 @@ interface AgentCardProps {
   highlighted?: boolean
 }
 
-const AgentCard: FC<AgentCardProps> = ({ agent, highlighted = false }) => {
+const AgentCard: FC<AgentCardProps> = ({ agent}) => {
   const router = useRouter();
   return (
     <div className={`relative rounded-lg border border-gray-700 overflow-hidden bg-[#000000] `}>
