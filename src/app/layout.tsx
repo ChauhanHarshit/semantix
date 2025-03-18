@@ -2,7 +2,7 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import { MetaMaskProvider } from "@metamask/sdk-react";
-import { AgentProvider } from "@/context/AgentContext"
+import { AgentProvider } from "../context/AgentContext"
 import "./globals.css";
 
 const geistSans = Geist({
