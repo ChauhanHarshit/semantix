@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, ReactNode } from "react"
 
 interface Agent {
   title: string
@@ -24,7 +24,22 @@ export function useAgentContext() {
 }
 
 export function AgentProvider({ children }: { children: ReactNode }) {
-  const [agents, setAgents] = useState<Agent[]>([])
+  const [agents, setAgents] = useState<Agent[]>([]) // Start with an empty array
+
+  // Load agents from localStorage after the component mounts
+  useEffect(() => {
+    const savedAgents = localStorage.getItem("agents")
+    if (savedAgents) {
+      setAgents(JSON.parse(savedAgents))
+    }
+  }, [])
+
+  // Save agents to localStorage whenever they change
+  useEffect(() => {
+    if (agents.length > 0) {
+      localStorage.setItem("agents", JSON.stringify(agents))
+    }
+  }, [agents])
 
   const addAgent = (agent: Agent) => {
     setAgents((prev) => [...prev, agent])

@@ -1,5 +1,6 @@
 import type { FC } from "react"
 import { Star } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface Agent {
   title: string
@@ -15,14 +16,15 @@ interface AgentCardProps {
 }
 
 const AgentCard: FC<AgentCardProps> = ({ agent, highlighted = false }) => {
+  const router = useRouter();
   return (
-    <div className={`relative rounded-lg overflow-hidden bg-[#111111] ${highlighted ? "ring-2 ring-blue-500" : ""}`}>
+    <div className={`relative rounded-lg border border-gray-700 overflow-hidden bg-[#000000] `}>
       {/* Agent Image */}
-      <div className="h-40 bg-gradient-to-br from-yellow-500 via-red-500 to-blue-600 overflow-hidden">
+      <div className="h-40  overflow-hidden">
         <img
-          src="/placeholder.svg?height=160&width=320"
+          src="/agent-frame.png"
           alt="Agent visualization"
-          className="w-full h-full object-cover mix-blend-overlay"
+          className="w-full h-full object-cover "
         />
       </div>
 
@@ -52,7 +54,7 @@ const AgentCard: FC<AgentCardProps> = ({ agent, highlighted = false }) => {
         </div>
 
         {/* Use Agent Button */}
-        <button className="w-full bg-[#8CDBC1] text-black py-2 rounded-md text-sm font-medium">USE AGENT</button>
+        <button onClick={() => router.push(`agent`)} className="w-full bg-[#8CDBC1] text-black py-2 rounded-2xl text-sm font-medium">USE AGENT</button>
       </div>
     </div>
   )

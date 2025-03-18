@@ -1,7 +1,5 @@
 "use client"
 
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
 import Navbar from "@/components/navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "@/context/AgentContext"
