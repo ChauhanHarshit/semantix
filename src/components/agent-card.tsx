@@ -1,6 +1,7 @@
 import type { FC } from "react"
 import { Star } from "lucide-react"
 import { useRouter } from "next/navigation"
+import Image from 'next/image'
 
 interface Agent {
   title: string
@@ -21,7 +22,7 @@ const AgentCard: FC<AgentCardProps> = ({ agent}) => {
     <div className={`relative rounded-lg border border-gray-700 overflow-hidden bg-[#000000] `}>
       {/* Agent Image */}
       <div className="h-40  overflow-hidden">
-        <img
+        <Image
           src="/agent-frame.png"
           alt="Agent visualization"
           className="w-full h-full object-cover "
