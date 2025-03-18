@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { useSDK } from "@metamask/sdk-react";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";

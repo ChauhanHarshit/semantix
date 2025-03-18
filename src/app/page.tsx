@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import Navbar from "@/components/Navbar"
 import "../app/globals.css";
