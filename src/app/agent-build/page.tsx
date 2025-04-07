@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "../../context/AgentContext"
 import { useState } from "react"
+import { ImageIcon } from "lucide-react"
 
 export default function AgentBuild() {
   const { addAgent } = useAgentContext()
@@ -18,7 +19,7 @@ export default function AgentBuild() {
   const handleSubmit = () => {
     if (!title || !description || !price) return
 
-    const rating : number = 4; 
+    const rating: number = 4;
 
     addAgent({
       title,
@@ -47,13 +48,20 @@ export default function AgentBuild() {
           </div>
 
           <div className="space-y-2">
+            <label className="text-white block">Upload Cover Image</label>
+            <div className="w-44 h-24 bg-white/10 border border-gray-500 rounded-lg flex items-center justify-center">
+              <ImageIcon className="text-gray-500" size={32} />
+            </div>
+          </div>
+
+          <div className="space-y-2">
             <label className="text-white block">Description</label>
             <textarea value={description} onChange={(e) => setDescription(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
           </div>
 
           <div className="space-y-2">
             <label className="text-white block">Parameters</label>
-            <textarea value ={parameter} onChange={(e) => setParameter(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
+            <textarea value={parameter} onChange={(e) => setParameter(e.target.value)} className="w-full bg-black border border-gray-800 rounded-md p-3 text-white h-24" />
           </div>
 
           <div className="space-y-2">
@@ -70,7 +78,7 @@ export default function AgentBuild() {
           </div>
 
           <div className="flex justify-center mt-8">
-          <button onClick={handleSubmit} className="bg-[#1D4500] text-white px-8 py-2 rounded-md">Build Now</button>
+            <button onClick={handleSubmit} className="bg-[#1D4500] text-white px-8 py-2 rounded-md">Build Now</button>
           </div>
         </div>
       </div>

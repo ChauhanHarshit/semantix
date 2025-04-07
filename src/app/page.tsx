@@ -15,7 +15,7 @@ export default function Home() {
     <div className="min-h-screen bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/bg1.png')" }}>
           <Navbar/>
       <main className="flex flex-col items-center justify-center text-center px-4 py-20 md:py-40">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 max-w-4xl">
+        <h1 className="text-5xl text-white md:text-7xl font-bold mb-6 max-w-4xl">
           Train and Trade
           <br />
           Distributed IPs
