@@ -3,7 +3,7 @@
 import Navbar from "../components/Navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "../../context/AgentContext"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ImageIcon } from "lucide-react"
 
 export default function AgentBuild() {
@@ -14,15 +14,27 @@ export default function AgentBuild() {
   const [description, setDescription] = useState("")
   const [price, setPrice] = useState("")
   const [parameter, setParameter] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   // const [rating, setRating] = useState(4)
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const url = URL.createObjectURL(file)
+      setImageUrl(url)
+    }
+  }
 
   const handleSubmit = () => {
     if (!title || !description || !price) return
 
     const rating: number = 4;
+    const id = `agent-${Date.now()}`
 
     addAgent({
+      id,
       title,
+      imageUrl,
       description,
       price: `${price} $SEM`,
       parameter,
@@ -49,8 +61,18 @@ export default function AgentBuild() {
 
           <div className="space-y-2">
             <label className="text-white block">Upload Cover Image</label>
-            <div className="w-44 h-24 bg-white/10 border border-gray-500 rounded-lg flex items-center justify-center">
-              <ImageIcon className="text-gray-500" size={32} />
+            <div className="w-44 h-24 bg-white/10 border border-gray-500 rounded-lg flex items-center justify-center overflow-hidden relative">
+              {imageUrl ? (
+                <img src={imageUrl} alt="Preview" className="w-full h-full object-cover" />
+              ) : (
+                <ImageIcon className="text-gray-500" size={32} />
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="absolute w-full h-full opacity-0 cursor-pointer"
+              />
             </div>
           </div>
 

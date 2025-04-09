@@ -1,7 +1,9 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
 
 interface Agent {
+  id: string
   title: string
+  imageUrl?: string 
   description: string
   price: string
   parameter: string
@@ -10,7 +12,9 @@ interface Agent {
 
 interface AgentContextType {
   agents: Agent[]
-  addAgent: (agent: Agent) => void
+  addAgent: (agent: Agent) => void,
+  removeAgent: (idOrTitle: string) => void
+  editAgent: (agent: Agent) => void
 }
 
 const AgentContext = createContext<AgentContextType | undefined>(undefined)
@@ -42,11 +46,24 @@ export function AgentProvider({ children }: { children: ReactNode }) {
   }, [agents])
 
   const addAgent = (agent: Agent) => {
+    if (agents.some(a => a.id === agent.id || a.title === agent.title)) return
     setAgents((prev) => [...prev, agent])
   }
 
+  const removeAgent = (idOrTitle: string) => {
+    setAgents((prevAgents) => prevAgents.filter((agent) => agent.id !== idOrTitle && agent.title !== idOrTitle))
+  }
+  const editAgent = (updatedAgent: Agent) => {
+    setAgents(prev =>
+      prev.map(agent =>
+        agent.id === updatedAgent.id ? updatedAgent : agent
+      )
+    )
+  }
+
+
   return (
-    <AgentContext.Provider value={{ agents, addAgent }}>
+    <AgentContext.Provider value={{ agents, addAgent, removeAgent, editAgent }}>
       {children}
     </AgentContext.Provider>
   )
