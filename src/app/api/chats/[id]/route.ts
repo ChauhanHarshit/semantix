@@ -1,8 +1,8 @@
 import { getChatById } from "../../../../app/actions/chat"
 import { NextResponse } from "next/server"
 
-export async function GET(request: Request, { params }: { params: { id: string } }) {
-  const id = params.id
+export async function GET(request: Request, context: { params: { id: string } }) {
+  const id = context.params.id
   const chat = await getChatById(id)
 
   if (!chat) {
@@ -11,4 +11,3 @@ export async function GET(request: Request, { params }: { params: { id: string }
 
   return NextResponse.json(chat)
 }
-
