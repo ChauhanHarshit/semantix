@@ -44,7 +44,7 @@ export default function ChatsView() {
       <div className="flex justify-between items-start mb-4">
         <div>
           <h1 className="text-3xl font-bold mb-1 text-white">Dashboard</h1>
-          <p className="text-gray-400">You'll see all of your chats over here</p>
+          <p className="text-gray-400">You will see all of your chats over here</p>
         </div>
 
         <button

@@ -10,7 +10,7 @@ interface DeleteAgentModalProps {
   onDelete: () => void
 }
 
-const DeleteAgentModal = ({ agentTitle, isOpen, onClose, onDelete }: DeleteAgentModalProps) => {
+const DeleteAgentModal = ({ isOpen, onClose, onDelete }: DeleteAgentModalProps) => {
   const [confirmText, setConfirmText] = useState("")
   const [isButtonDisabled, setIsButtonDisabled] = useState(true)
 

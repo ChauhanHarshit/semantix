@@ -3,7 +3,7 @@
 import Navbar from "../components/Navbar"
 import { useRouter } from "next/navigation"
 import { useAgentContext } from "../../context/AgentContext"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ImageIcon } from "lucide-react"
 
 export default function AgentBuild() {
