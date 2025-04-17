@@ -79,11 +79,13 @@ const AgentCard: FC<AgentCardProps> = ({ agent }) => {
         {/* Use Agent Button */}
         <div className="flex justify-between">
           <button
-            onClick={() => router.push(`agent`)}
+            onClick={() => router.push(`/agent?id=${agent.id}&title=${encodeURIComponent(agent.title)}`)}
             className="w-48 bg-[#8CDBC1] text-black py-2 rounded-2xl text-sm font-bold"
           >
             USE AGENT
           </button>
+
+
           <button onClick={() => setIsDeleteModalOpen(true)} >
             <Trash2 className="text-[#3B8874] mt-1 hover:text-[#8CDBC1] transition-colors" />
           </button>

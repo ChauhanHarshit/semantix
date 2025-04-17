@@ -25,6 +25,7 @@ export interface Chat {
 const chats: Chat[] = []
 
 // Update the generateResponse function to properly format the API request
+// Update the generateResponse function to properly format the API request
 export async function generateResponse(message: string, chatId?: string) {
   try {
     console.log("Sending request with message:", message, "chatId:", chatId)
@@ -34,19 +35,14 @@ export async function generateResponse(message: string, chatId?: string) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": process.env.API_KEY || "", // Use x-api-key header instead of Authorization
+        "x-api-key": process.env.API_KEY || "",
       },
       body: JSON.stringify({
-        prompt: message, // Make sure we're using the correct field name (prompt instead of message)
+        request: message,
+        model: 1,
       }),
     })
 
-    if (!response.ok) {
-      console.error(`API responded with status: ${response.status}`)
-      const errorText = await response.text()
-      console.error("Error response:", errorText)
-      throw new Error(`API responded with status: ${response.status}`)
-    }
 
     const data = await response.json()
     console.log("API response:", data)

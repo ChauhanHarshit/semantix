@@ -10,29 +10,52 @@ export default function Agent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const chatId = searchParams.get("id")
+  const agentTitleParam = searchParams.get("title")
 
   const [messages, setMessages] = useState<Message[]>([])
   const [inputValue, setInputValue] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [chatTitle, setChatTitle] = useState(agentTitleParam || "AI Assistant")
+
 
   // Fetch messages if chatId is provided
   useEffect(() => {
-    const fetchChat = async () => {
+    const fetchChatOrAgent = async () => {
       if (chatId) {
         try {
           const response = await fetch(`/api/chats/${chatId}`)
           if (response.ok) {
             const chat = await response.json()
             setMessages(chat.messages)
+            setChatTitle(chat.title || "AI Assistant")
+            return
           }
         } catch (error) {
           console.error("Error fetching chat:", error)
         }
       }
+  
+      // If there's no chat, try to fetch the agent's title using the id
+      const agentId = searchParams.get("id")
+      if (agentId) {
+        try {
+          const response = await fetch(`/api/agents/${agentId}`)
+          if (response.ok) {
+            const agent = await response.json()
+            setChatTitle(agent.title || "AI Assistant")
+          }
+        } catch (error) {
+          console.error("Error fetching agent:", error)
+        }
+      }
     }
+  
+    fetchChatOrAgent()
+  }, [chatId, searchParams])
+  
 
-    fetchChat()
-  }, [chatId])
+  
+  
 
   // Update the handleSendMessage function to properly handle the chatId
   const handleSendMessage = async () => {
@@ -89,11 +112,12 @@ export default function Agent() {
   }
 
   return (
+    
     <div className="min-h-screen bg-black text-white flex flex-col">
       <Navbar />
 
       <main className="flex-1 flex flex-col max-w-3xl mx-auto w-full p-4">
-        <h2 className="text-2xl font-bold text-center my-6">AI Assistant</h2>
+      <h2 className="text-2xl font-bold text-center my-6">{chatTitle}</h2>
 
         <div className="flex-1 space-y-6 overflow-y-auto mb-6">
           {messages.length === 0 ? (
